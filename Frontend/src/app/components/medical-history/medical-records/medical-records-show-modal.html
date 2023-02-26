@@ -1,0 +1,23 @@
+<div class="modal-content">
+    <h4 class="mb-32">Historial Medico de {{ fullname }}</h4>
+  
+    <div  *ngIf="errorAddEdit != '' "
+      class="alert alert-danger alert-text-danger d-flex fs-14 align-items-center rounded mb-16"
+      role="alert">
+      <i-feather name="alert-circle" class="text-danger feather-base me-12"></i-feather>
+      {{ errorAddEdit }}
+    </div>
+    
+      <div class="example-form-fields">
+        <mat-card-content>
+          <h4>Sexo: {{ sex }}</h4>
+          <h4>Ocupación: {{ occupation }}</h4>
+          <h4>Malestar Actual: {{ current_discomforts }}</h4>
+          <h4>Antecedentes Familiares: {{ family_history }}</h4>
+          <h4>Antecedentes Personales: {{ personal_history }}</h4>
+          <h4>Hábitos Fisiológicos: {{ physiological_habits }}</h4>
+        </mat-card-content>
+
+      </div>
+
+  </div>

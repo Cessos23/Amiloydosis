@@ -1,0 +1,21 @@
+<!-- Cards -->
+<div fxLayout="row wrap" fxLayoutGap="30px grid">
+  <div fxFlex.md="33%" fxFlex.lg="33%" fxFlex.xl="33%" fxFlex.sm="100%" *ngFor="let card of cards">
+    <mat-card class="overflow-hidden">
+      <div>
+        <img src="{{ card.image }}" class="w-100" alt="">
+      </div>
+      <mat-card-content>
+        <div>
+          <p class="fs-18 lh-lg fw-medium">
+            ¡Bienvenido!
+          </p>
+          <p class="op-7">
+            Proporciona atención y cuidado médico a pacientes 
+            con problemas y enfermedades cardiovasculares.</p>
+          <button mat-button class="btn {{ card.btn }} fw-normal mt-4">Leer más</button>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

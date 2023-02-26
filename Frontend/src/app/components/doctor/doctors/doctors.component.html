@@ -1,0 +1,98 @@
+<!-- Daily Activity -->
+<mat-card class="w-100">
+    <mat-card-content>
+      <h4 class="mb-56">Doctores</h4>
+
+      <button mat-button color="primary" (click)="openAddModal()" >Agregar Doctor</button>
+  
+      <div class="table-responsive">
+        <table mat-table [dataSource]="dataSource" class="text-nowrap w-100">
+  
+          <!-- Id Column -->
+          <ng-container matColumnDef="id">
+            <th mat-header-cell *matHeaderCellDef> Id </th>
+            <td mat-cell class="fw-medium" *matCellDef="let element; let i = index"> {{i +1 }} </td>
+          </ng-container>
+
+  
+          <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef> Nombre </th>
+            <td mat-cell *matCellDef="let element">
+              <p class="mb-0 fw-medium">{{ element.name }}</p>
+              <p class="mb-0 fw-normal op-5">{{ element.lastname }}</p>
+
+            </td>
+          </ng-container>
+  
+          <ng-container matColumnDef="birthday">
+            <th mat-header-cell *matHeaderCellDef> Fecha Nacimiento </th>
+            <td mat-cell *matCellDef="let element">
+              <p class="mb-0 fw-medium op-5">{{element.birthday | date}}</p>
+            </td>
+          </ng-container>
+          
+
+          <ng-container matColumnDef="phone_number">
+            <th mat-header-cell *matHeaderCellDef> Teléfono </th>
+            <td mat-cell *matCellDef="let element">
+              <p class="mb-0 fw-medium op-5">{{element.phone_number}}</p>
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="personal_number">
+            <th mat-header-cell *matHeaderCellDef> Teléfono Personal </th>
+            <td mat-cell *matCellDef="let element">
+              <p class="mb-0 fw-medium op-5">{{element.personal_number}}</p>
+            </td>
+          </ng-container>
+  
+          <ng-container matColumnDef="speciality">
+            <th mat-header-cell *matHeaderCellDef> Especialidad </th>
+            <td mat-cell *matCellDef="let element">
+              <p class="mb-0 fw-medium op-5">{{element.speciality}}</p>
+            </td>
+          </ng-container>
+         
+  
+
+          <!-- Edit -->
+          <ng-container matColumnDef="actions">
+            <th mat-header-cell *matHeaderCellDef> Actions </th>
+            <td mat-cell class="fw-medium" *matCellDef="let element"> 
+
+              <button mat-mini-fab class="mb-8 me-8" color="accent" (click) = "openEditModal(element._id)" >
+                <i-feather name="edit" class="warning feather-base me-12"></i-feather>
+
+              </button>
+
+              <button mat-mini-fab class="mb-8 me-8" color="warn"  (click) = "delete(element._id)">
+                <i-feather name="trash-2" class="warning feather-base me-12"></i-feather>
+
+              </button>
+              
+            </td>
+            
+          </ng-container>
+  
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+      </div>
+    </mat-card-content>
+
+    
+</mat-card>
+
+<!-- 
+<div class="cdk-overlay-container" *ngIf="showDialog">
+  <div class="cdk-overlay-backdrop cdk-overlay-dark-backdrop cdk-overlay-backdrop-showing"></div>
+  <div class="cdk-global-overlay-wrapper" style="justify-content: center; align-items: center;" >
+    <div id="cdk-overlay-1" class="cdk-overlay-pane" style="max-width: 80vw; width: 600px; height: 80%; position: static;">
+      <div id="myModal" class="modal">
+      
+    </div>
+    </div>
+  </div>
+</div> -->
+
+

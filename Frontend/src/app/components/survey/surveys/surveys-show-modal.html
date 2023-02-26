@@ -1,0 +1,26 @@
+<div class="modal-content">
+    <h4 class="mb-32">Encuesta</h4>
+  
+    <div  *ngIf="errorAddEdit != '' "
+      class="alert alert-danger alert-text-danger d-flex fs-14 align-items-center rounded mb-16"
+      role="alert">
+      <i-feather name="alert-circle" class="text-danger feather-base me-12"></i-feather>
+      {{ errorAddEdit }}
+    </div>
+    <form [formGroup]="formGroup" >
+      <mat-card class="result">
+        <mat-card-content>
+          <section class="example-section" *ngFor="let element of question;let i=index">
+            <label class="example-margin">{{ element}}:</label>
+            <mat-radio-group >
+              <mat-radio-button *ngFor="let a of arrayRadio"  value={{a}}  (change)="radioChange($event)">
+                {{a}}
+          </mat-radio-button>
+            </mat-radio-group>
+          </section>
+        </mat-card-content>
+      </mat-card>
+      <button mat-button class="btn btn-info fw-normal"  [mat-dialog-close]="formGroup" >Submit</button>
+    </form>
+    
+  </div>

@@ -1,0 +1,45 @@
+<div class="modal-content">
+    <h4 class="mb-32">Agregar Encuesta</h4>
+  
+    <div  *ngIf="errorAddEdit != '' "
+      class="alert alert-danger alert-text-danger d-flex fs-14 align-items-center rounded mb-16"
+      role="alert">
+      <i-feather name="alert-circle" class="text-danger feather-base me-12"></i-feather>
+      {{ errorAddEdit }}
+    </div>
+    
+    <form [formGroup]="formGroup" >
+      <mat-form-field class="w-100 fs-16" appearance="outline">
+        <mat-label>Paciente</mat-label>
+        <mat-select formControlName="id_paciente" name="id_paciente" id="paciente"   (selectionChange)="selectChange($event)" >
+          <mat-option  value="">Seleccionar Paciente</mat-option>
+          <mat-option *ngFor="let permiso of permisos" fullname="permiso.text"  [value]="permiso.value">{{permiso.text}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field class="w-100 fs-16" appearance="outline">
+        <mat-label>Nombre</mat-label>
+        <input matInput type="text"   placeholder="Nombre" id="fullname" formControlName="fullname" name="fullname">
+      </mat-form-field>
+    
+      <table formArrayName="questions">
+        <tbody>
+          <tr *ngFor="let item of questions.controls;let i=index" [formGroupName]="i">
+            <td><mat-form-field class="w-100 fs-16" appearance="outline">
+              <mat-label>Pregunta</mat-label>
+              <input matInput type="text"  placeholder="Pregunta" formControlName="question" name="question">
+            </mat-form-field></td>
+            <td><button mat-button color="accent" (click)="Removeitem(i)">(-)</button></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div>
+        <a mat-raised-button color="primary" (click)="Addnewrow()">Agregar Pregunta (+)</a>
+      </div>
+    
+      
+      
+    
+      <button mat-button class="btn btn-info fw-normal"  [mat-dialog-close]="formGroup" >Submit</button>
+    </form>
+  </div>

@@ -1,0 +1,68 @@
+<div class="main-content">
+  <div class="container-fluid">
+      <div class="row">
+          <div class="col-md-8">
+              <div class="card">
+                  <div class="card-header card-header-danger">
+                      <h4 class="card-title">Perfil</h4>
+                  </div>
+                  <div class="card-body">
+                    <div class="col-md-12">
+                      <div class="card card-profile">
+                          <div class="card-avatar"  layout-align="center center" style="text-align: center;">
+                              <a href="javascript:void(0)">
+                                  <img class="img"  layout-align="center center" width="25%" src={{avatar}} />
+                              </a>
+                          </div>
+                          <div class="card-body" >
+                              <h3 class="card-title">{{name}}</h3>
+                              <button mat-mini-fab class="mb-8 me-8"  *ngIf="this.isButtonVisible" title="Ver resultados de examenes" color="primary"
+                                (click) = "openViewModal(name)">
+                                <i-feather name="eye" class="warning feather-base me-12"></i-feather>
+                
+                              </button>
+                  
+                          </div>
+                      </div>
+                  </div>
+                  <form [formGroup]="formGroup" (submit)="addUser()">
+                          <div class="row">
+                            
+                              <div class="col-md-10">
+                                  <mat-form-field class="w-100 fs-16">
+                                    <input matInput placeholder="Direccion" formControlName="address" name="address">
+                                  </mat-form-field>
+                              </div>
+                              <div class="col-md-4">
+                                  <mat-form-field class="w-100 fs-16">
+                                    <input matInput placeholder="Teléfono"  formControlName="phone_number" name="phone_number">
+                                  </mat-form-field>
+                              </div>
+                              <div class="col-md-4">
+                                <mat-form-field class="w-100 fs-16">
+                                  <input matInput placeholder="Correo" type="email"  formControlName="email" name="email ">
+                                </mat-form-field>
+                            </div>
+                          </div>
+                          <div class="row">
+                              <div class="col-md-3">
+                                <mat-form-field class="w-100 fs-16">
+                                  <input matInput placeholder="Ocupación" type="text" formControlName="occupation" name="occupation">
+                                </mat-form-field>
+                              </div>
+                              <div class="col-md-4">
+                                <mat-form-field class="w-100 fs-16">
+                                  <input matInput placeholder="Estado Civil" type="text" formControlName="marital_status" name="marital_status">
+                                </mat-form-field>
+                              </div>
+                          </div>
+                          <button mat-button class="btn btn-info fw-normal"  type="submit">Submit</button>
+                          <div class="clearfix"></div>
+                      </form>
+                  </div>
+              </div>
+          </div>
+          
+      </div>
+  </div>
+</div>

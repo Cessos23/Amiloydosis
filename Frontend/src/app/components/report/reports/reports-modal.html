@@ -1,0 +1,64 @@
+<div class="modal-content">
+    <h4 class="mb-32">Agregar Doctor</h4>
+  
+    <div  *ngIf="errorAddEdit != '' "
+      class="alert alert-danger alert-text-danger d-flex fs-14 align-items-center rounded mb-16"
+      role="alert">
+      <i-feather name="alert-circle" class="text-danger feather-base me-12"></i-feather>
+      {{ errorAddEdit }}
+    </div>
+    
+    <form [formGroup]="formGroup" >
+      <mat-form-field class="w-100 fs-16" appearance="outline">
+        <mat-label>Nombre</mat-label>
+        <input matInput type="text"  placeholder="Nombre del Doctor" formControlName="name" name="name">
+      </mat-form-field>
+    
+      <mat-form-field class="w-100 fs-16" appearance="outline">
+        <mat-label>Apellidos</mat-label>
+        <input matInput type="text"  placeholder="Apellidos del Doctor" formControlName="lastname" name="lastname">
+      </mat-form-field>
+    
+      <mat-form-field class="w-100 fs-16" appearance="outline">
+        <mat-label>Birthday</mat-label>
+        <input matInput type="date"    formControlName="birthday" name="birthday">
+      </mat-form-field>
+  
+      <mat-form-field class="w-50 fs-16" appearance="outline">
+        <mat-label>Telefono</mat-label>
+        <input matInput type="text" [textMask]="{mask: phoneMask}"   formControlName="phone_number" name="phone_number">
+      </mat-form-field>
+  
+      <mat-form-field class="w-50 fs-16" appearance="outline">
+        <mat-label>Telefono Personal</mat-label>
+        <input matInput type="text" [textMask]="{mask: phoneMask}"   formControlName="personal_number" name="personal_number">
+      </mat-form-field>
+    
+      <mat-form-field class="w-50 fs-16" appearance="outline">
+        <mat-label>Especialidad</mat-label>
+        <input matInput type="text"  placeholder="Especialidad del Doctor" formControlName="speciality" name="speciality">
+      </mat-form-field>
+  
+      <mat-form-field class="w-50 fs-16" appearance="outline">
+        <mat-label>Cedula Profesional</mat-label>
+        <input matInput type="text"  placeholder="Cedula Profesional del Doctor" formControlName="professional_license" name="professional_license">
+      </mat-form-field>
+  
+      <mat-form-field class="w-100 fs-16" appearance="outline">
+        <mat-label>Acerca</mat-label>
+        <textarea matInput rows="6" placeholder="Acerca del Doctor" formControlName="about" name="about"></textarea>
+      </mat-form-field>
+  
+      <mat-form-field class="w-100 fs-16" appearance="outline">
+        <mat-label>Educacion Profesional</mat-label>
+        <textarea matInput rows="6" placeholder="Educacion del Doctor" formControlName="education" name="education"></textarea>
+      </mat-form-field>
+  
+      <mat-form-field class="w-100 fs-16" appearance="outline">
+        <mat-label>Idiomas </mat-label>
+        <textarea matInput rows="6" placeholder="Idiomas del Doctor" formControlName="languages" name="languages"></textarea>
+      </mat-form-field>
+    
+      <button mat-button class="btn btn-info fw-normal"  [mat-dialog-close]="formGroup" >Submit</button>
+    </form>
+  </div>

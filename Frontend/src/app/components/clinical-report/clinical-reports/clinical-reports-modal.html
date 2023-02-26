@@ -1,0 +1,71 @@
+<div class="modal-content">
+    <h4 class="mb-32">Agregar Informe Clínico</h4>
+  
+    <div  *ngIf="errorAddEdit != '' "
+      class="alert alert-danger alert-text-danger d-flex fs-14 align-items-center rounded mb-16"
+      role="alert">
+      <i-feather name="alert-circle" class="text-danger feather-base me-12"></i-feather>
+      {{ errorAddEdit }}
+    </div>
+    
+    <form [formGroup]="formGroup" >
+      <mat-form-field class="w-100 fs-16" appearance="outline">
+        <mat-label>Paciente</mat-label>
+        <mat-select formControlName="id_paciente" name="id_paciente" id="paciente"   (selectionChange)="selectChange($event)" >
+          <mat-option  value="">Seleccionar Paciente</mat-option>
+          <mat-option *ngFor="let permiso of permisos" fullname="permiso.text"  [value]="permiso.value">{{permiso.text}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field class="w-100 fs-16" appearance="outline">
+        <mat-label>Nombre</mat-label>
+        <input matInput type="text"   placeholder="Nombre" id="fullname" formControlName="fullname" name="fullname">
+      </mat-form-field>
+      <div class="example-form-fields">
+
+
+        <mat-form-field class="w-25 fs-16" appearance="outline">
+          <mat-label>Temperatura</mat-label>
+          <input matInput type="number"  placeholder="Temperatura del Paciente" formControlName="temperature" name="temperature">
+        </mat-form-field>
+        <mat-form-field class="w-25 fs-16" appearance="outline">
+          <mat-label>TA</mat-label>
+          <input matInput type="number"  placeholder="TA del Paciente" formControlName="blood_pressure" name="blood_pressure">
+        </mat-form-field>
+        <mat-form-field class="w-25 fs-16" appearance="outline">
+          <mat-label>Glucosa</mat-label>
+          <input matInput type="number"  placeholder="Glucosa paciente" formControlName="glucose" name="glucose">
+        </mat-form-field>
+        <mat-form-field class="w-25 fs-16" appearance="outline">
+          <mat-label>Peso</mat-label>
+          <input matInput type="number"  placeholder="Peso del Paciente" formControlName="weight" name="weight">
+        </mat-form-field>
+
+      </div>
+      <mat-form-field class="w-100 fs-16" appearance="outline">
+        <mat-label>Datos del hospital</mat-label>
+        <input matInput type="text"   placeholder="Datos del hospital"  formControlName="hospital_data" name="hospital_data">
+      </mat-form-field>
+      <mat-form-field class="w-100 fs-16" appearance="outline">
+        <mat-label>Motivos</mat-label>
+        <textarea matInput rows="6" placeholder="Motivos de seguimiento médico" formControlName="reason_medical" name="reason_medical"></textarea>
+      </mat-form-field>
+      <mat-form-field class="w-100 fs-16" appearance="outline">
+        <mat-label>Intervenciones anteriores</mat-label>
+        <input matInput type="text"   placeholder="Intervenciones anteriores" id="citasAnteriores"  formControlName="past_appointment" name="past_appointment">
+      </mat-form-field>
+      <mat-form-field class="w-100 fs-16" appearance="outline">
+        <mat-label>Analísis anteriores</mat-label>
+        <input matInput type="text"   placeholder="Analísis anteriores" id="analisisAnteriores" formControlName="analysis" name="analysis">
+      </mat-form-field>
+      <mat-form-field class="w-100 fs-16" appearance="outline">
+        <mat-label>Recomiendaciones</mat-label>
+        <textarea matInput rows="6" placeholder="Recomiendaciones" formControlName="recommendations" name="recommendations"></textarea>
+      </mat-form-field>
+      <mat-form-field class="w-100 fs-16" appearance="outline">
+        <mat-label>Infusión</mat-label>
+        <textarea matInput rows="6" placeholder="Infusión" formControlName="infusion" name="infusion"></textarea>
+      </mat-form-field>
+
+      <button mat-button class="btn btn-info fw-normal"  [mat-dialog-close]="formGroup" >Submit</button>
+    </form>
+  </div>

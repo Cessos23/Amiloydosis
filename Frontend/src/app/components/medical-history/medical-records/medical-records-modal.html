@@ -1,0 +1,50 @@
+<div class="modal-content">
+    <h4 class="mb-32">Agregar Historial Medico</h4>
+  
+    <div  *ngIf="errorAddEdit != '' "
+      class="alert alert-danger alert-text-danger d-flex fs-14 align-items-center rounded mb-16"
+      role="alert">
+      <i-feather name="alert-circle" class="text-danger feather-base me-12"></i-feather>
+      {{ errorAddEdit }}
+    </div>
+    
+    <form [formGroup]="formGroup" >
+      <mat-form-field class="w-100 fs-16" appearance="outline">
+        <mat-label>Paciente</mat-label>
+        <mat-select formControlName="id_paciente" name="id_paciente" id="paciente"   (selectionChange)="selectChange($event)" >
+          <mat-option  value="">Seleccionar Paciente</mat-option>
+          <mat-option *ngFor="let permiso of permisos" fullname="permiso.text"  [value]="permiso.value">{{permiso.text}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field class="w-100 fs-16" appearance="outline">
+        <mat-label>Nombre</mat-label>
+        <input matInput type="text"   placeholder="Nombre" id="fullname" formControlName="fullname" name="fullname">
+      </mat-form-field>
+      <mat-form-field class="w-100 fs-16" appearance="outline">
+        <mat-label>Sexo</mat-label>
+        <input matInput type="text"  placeholder="Sexo" formControlName="sex" name="sex">
+      </mat-form-field>
+      <mat-form-field class="w-100 fs-16" appearance="outline">
+        <mat-label>Ocupación</mat-label>
+        <input matInput type="text"  placeholder="ocupacion" formControlName="occupation" name="occupation">
+      </mat-form-field>
+      <mat-form-field class="w-100 fs-16" appearance="outline">
+        <mat-label>Malestar Actual</mat-label>
+        <textarea matInput rows="6" placeholder="Malestar Actual" formControlName="current_discomforts" name="current_discomforts"></textarea>
+      </mat-form-field>
+      <mat-form-field class="w-100 fs-16" appearance="outline">
+        <mat-label>Antecedentes Familiares</mat-label>
+        <textarea matInput rows="6" placeholder="Antecedentes Familiares" formControlName="family_history" name="family_history"></textarea>
+      </mat-form-field>
+      <mat-form-field class="w-100 fs-16" appearance="outline">
+        <mat-label>Antecedentes Personales</mat-label>
+        <textarea matInput rows="6" placeholder="Antecedentes Personales (hábitos, cigarrillo o tabaco, drogas)." formControlName="personal_history" name="personal_history"></textarea>
+      </mat-form-field>
+      <mat-form-field class="w-100 fs-16" appearance="outline">
+        <mat-label>Hábitos Fisiológicos</mat-label>
+        <textarea matInput rows="6" placeholder="Hábitos Fisiológicos (Alimentación, sueño, sexualidad, ejercicios, alergias)." formControlName="physiological_habits" name="physiological_habits"></textarea>
+      </mat-form-field>
+    
+      <button mat-button class="btn btn-info fw-normal"  [mat-dialog-close]="formGroup" >Submit</button>
+    </form>
+  </div>

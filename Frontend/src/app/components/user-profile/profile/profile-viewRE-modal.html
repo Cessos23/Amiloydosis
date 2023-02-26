@@ -1,0 +1,21 @@
+<div class="modal-content">
+
+  <div  *ngIf="errorAddEdit != '' "
+    class="alert alert-danger alert-text-danger d-flex fs-14 align-items-center rounded mb-16"
+    role="alert">
+    <i-feather name="alert-circle" class="text-danger feather-base me-12"></i-feather>
+    {{ errorAddEdit }}
+  </div>
+  
+    <div class="example-form-fields">
+      <pdf-viewer [src]="pdfSrc"
+              [render-text]="true"
+              [original-size]="false"
+              style="width: 650px; height: 400px "
+  ></pdf-viewer>
+    </div>
+
+    
+    
+
+</div>

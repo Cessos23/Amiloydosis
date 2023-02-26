@@ -1,0 +1,99 @@
+<div class="modal-content">
+    <h4 class="mb-32">Agregar contrato</h4>
+  
+    <div  *ngIf="errorAddEdit != '' "
+      class="alert alert-danger alert-text-danger d-flex fs-14 align-items-center rounded mb-16"
+      role="alert">
+      <i-feather name="alert-circle" class="text-danger feather-base me-12"></i-feather>
+      {{ errorAddEdit }}
+    </div>
+    
+    <form [formGroup]="formGroup" (submit)="add()" >
+      <mat-form-field class="w-100 fs-16" appearance="outline">
+        <mat-label>Título</mat-label>
+        <input matInput type="text"  placeholder="Título" formControlName="title" name="title">
+      </mat-form-field>
+    
+      <mat-form-field class="w-100 fs-16" appearance="outline">
+        <mat-label>Número de protocolo</mat-label>
+        <input matInput type="number"  placeholder="Número de protocolo" formControlName="protocol_number" name="protocol_number">
+      </mat-form-field>
+
+      <mat-form-field class="w-100 fs-16" appearance="outline">
+        <mat-label>Nombre Doctor</mat-label>
+        <input matInput type="text"  placeholder="Investigador médico del estudio" formControlName="doctor_name" name="doctor_name">
+      </mat-form-field>
+      <mat-form-field class="w-100 fs-16" appearance="outline">
+        <mat-label>Hospital</mat-label>
+        <input matInput type="text"  placeholder="Centro de investigación" formControlName="hospital_name" name="hospital_name">
+      </mat-form-field>
+      <mat-form-field class="w-100 fs-16" appearance="outline">
+        <mat-label>Protocolo</mat-label>
+        <input matInput type="text"  placeholder="Descripción del protocolo" formControlName="description_protocol" name="description_protocol">
+      </mat-form-field>
+      <mat-form-field class="w-100 fs-16" appearance="outline">
+        <mat-label>Cláusulas</mat-label>
+        <textarea matInput rows="6" placeholder="Cláusulas" formControlName="clauses" name="clauses"></textarea>
+      </mat-form-field>
+      <mat-form-field class="w-100 fs-16" appearance="outline">
+        <mat-label>Paciente</mat-label>
+        <mat-select formControlName="fullname_patient" name="fullname_patient" id="paciente"   (selectionChange)="selectChange($event)" >
+          <mat-option  value="0">Seleccionar Paciente</mat-option>
+          <mat-option *ngFor="let permiso of permisos" fullname="permiso.text"  [value]="permiso.value">{{permiso.text}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <div class="signature-container" style=" border: 1px solid black;width: 50%;margin: auto;">
+        <signature-pad  appearance="outline" [options]="signaturePadOptions"  (onBeginEvent)="drawStart()" ></signature-pad>
+      </div>
+      <mat-label>Firma paciente</mat-label>
+      <button mat-button class="btn btn-info fw-normal"  (click)="clearSignaturePatient()" >
+        <i-feather name="refresh-cw" class="warning feather-base me-12"></i-feather>
+      </button>
+      <button mat-button class="btn btn-info fw-normal"  (click)="savePadPatient()" >
+        <i-feather name="save" class="warning feather-base me-12" ></i-feather>
+      </button>
+      <mat-form-field class="w-100 fs-16" appearance="outline">
+        <mat-label>Nombre Testigo 1</mat-label>
+        <input matInput type="text"  placeholder="Nombre completo del testigo 1" formControlName="fullname_witnessone" name="fullname_witnessone">
+      </mat-form-field>
+      <div class="signature-container" style=" border: 1px solid black;width: 50%;margin: auto;">
+        <signature-pad #witnessone appearance="outline" [options]="signaturePadOptions"  (onBeginEvent)="drawStart()" ></signature-pad>
+      </div>
+      <mat-label>Firma Testigo 1</mat-label>
+      <button mat-button class="btn btn-info fw-normal"  (click)="clearSignatureWitnessOne()" >
+        <i-feather name="refresh-cw" class="warning feather-base me-12"></i-feather>
+      </button>
+      <button mat-button class="btn btn-info fw-normal"  (click)="savePadWitnessOne()" >
+        <i-feather name="save" class="warning feather-base me-12" ></i-feather>
+      </button>
+      <mat-form-field class="w-100 fs-16" appearance="outline">
+        <mat-label>Nombre Testigo 2</mat-label>
+        <input matInput type="text"  placeholder="Nombre completo del testigo 1" formControlName="fullname_witnesstwo" name="fullname_witnesstwo">
+      </mat-form-field>
+      
+      <div class="signature-container" style=" border: 1px solid black;width: 50%;margin: auto;">
+        <signature-pad #witnesstwo  appearance="outline" [options]="signaturePadOptions"  (onBeginEvent)="drawStart()" ></signature-pad>
+      </div>
+      <mat-label>Firma Testigo 2 </mat-label>
+      <button mat-button class="btn btn-info fw-normal"  (click)="clearSignatureWitnessTwo()" >
+        <i-feather name="refresh-cw" class="warning feather-base me-12"></i-feather>
+      </button>
+      <button mat-button class="btn btn-info fw-normal"  (click)="savePadWitnessTwo()" >
+        <i-feather name="save" class="warning feather-base me-12" ></i-feather>
+      </button>
+      <br>
+    
+      <mat-form-field class="w-100 fs-16" appearance="outline">
+        <mat-label>Fecha Inicio</mat-label>
+        <input matInput type="date"    formControlName="date_start" name="date_start">
+      </mat-form-field>
+      <mat-form-field class="w-100 fs-16" appearance="outline">
+        <mat-label>Fecha termina</mat-label>
+        <input matInput type="date"    formControlName="date_end" name="date_end">
+      </mat-form-field>
+  
+    
+    
+      <button mat-button class="btn btn-info fw-normal"  >Submit</button>
+    </form>
+  </div>
